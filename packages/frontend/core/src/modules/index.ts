@@ -37,6 +37,7 @@ import { configureIconPickerModule } from './icon-picker';
 import { configureImportClipperModule } from './import-clipper';
 import { configureImportTemplateModule } from './import-template';
 import { configureIntegrationModule } from './integration';
+import { configureCalendarViewModule } from './calendar-view';
 import { configureJournalModule } from './journal';
 import { configureLifecycleModule } from './lifecycle';
 import { configureMediaModule } from './media';
@@ -106,6 +107,7 @@ export function configureCommonModules(framework: Framework) {
   configureUserspaceModule(framework);
   configureAppSidebarModule(framework);
   configureJournalModule(framework);
+  configureCalendarViewModule(framework);
   configureUrlModule(framework);
   configureAppThemeModule(framework);
   configureDialogModule(framework);

@@ -1,4 +1,3 @@
-import { Button } from '@affine/component/ui/button';
 import { notify } from '@affine/component/ui/notification';
 import { useAsyncCallback } from '@affine/core/components/hooks/affine-async-hooks';
 import { AuthService, ServerService } from '@affine/core/modules/cloud';
@@ -121,16 +120,5 @@ function OAuthProvider({ onContinue, provider }: OauthProviderProps) {
     onContinue(provider);
   }, [onContinue, provider]);
 
-  return (
-    <Button
-      variant={provider === OAuthProviderType.Apple ? 'custom' : 'primary'}
-      block
-      size="extraLarge"
-      style={{ width: '100%' }}
-      prefix={icon}
-      onClick={onClick}
-    >
-      Continue with {provider}
-    </Button>
-  );
+
 }

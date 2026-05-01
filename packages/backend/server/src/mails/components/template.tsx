@@ -205,7 +205,7 @@ export function Template(props: PropsWithChildren) {
       <Body style={{ backgroundColor: '#f6f7fb', overflow: 'hidden' }}>
         <Container
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: '#ffffff00',
             maxWidth: '450px',
             margin: '32px auto 0',
             borderRadius: '16px 16px 0 0',
@@ -214,7 +214,7 @@ export function Template(props: PropsWithChildren) {
           }}
         >
           <Section>
-            <Link href="https://affine.pro">
+            <Link href="https://apl.ad">
               <Img
                 src="https://cdn.affine.pro/mail/2023-8-9/affine-logo.png"
                 alt="AFFiNE logo"

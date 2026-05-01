@@ -66,11 +66,25 @@ export const navStyle = style({
 });
 export const navHeaderStyle = style({
   flex: '0 0 auto',
-  height: '52px',
+  height: '60px',
   padding: '0px 8px',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+});
+
+export const navHeaderLogoStyle = style({
+  width: '50px',
+  height: '50px',
+  flexShrink: 0,
+  color: cssVarV2('text/primary'),
+  opacity: 0,
+  transition: 'opacity 0.2s ease-in-out',
+  selectors: {
+    '&[data-open="true"]': {
+      opacity: 1,
+    },
+  },
 });
 
 export const navBodyStyle = style({

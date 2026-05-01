@@ -90,10 +90,6 @@ export const OpenInAppPage = ({
             Contact us
           </a>
         </div>
-
-        <Button onClick={openDownloadLink}>
-          {t['com.affine.auth.open.affine.download-app']()}
-        </Button>
       </div>
 
       <div className={styles.centerContent}>
