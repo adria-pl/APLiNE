@@ -1,4 +1,4 @@
-# Building AFFiNE Web
+# Building APLiNE Web
 
 > **Warning**:
 >
@@ -62,7 +62,7 @@ yarn install
 #### Linux & MacOS
 
 ```sh
-git clone https://github.com/toeverything/AFFiNE
+git clone https://github.com/adria-pl/APLiNE
 ```
 
 #### Windows
