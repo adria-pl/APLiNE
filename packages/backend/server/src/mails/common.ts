@@ -7,7 +7,7 @@ export const TEST_USER: UserProps = {
 
 export const TEST_WORKSPACE: WorkspaceProps = {
   name: 'Test Workspace',
-  avatar: 'https://app.affine.pro/favicon-192.png',
+  avatar: 'https://raw.githubusercontent.com/adria-pl/APLiNE/canary/assets/APL_Projectes_400.png',
 };
 
 export const TEST_DOC: DocProps = {

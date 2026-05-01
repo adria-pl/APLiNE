@@ -216,8 +216,8 @@ export function Template(props: PropsWithChildren) {
           <Section>
             <Link href="https://apl.ad">
               <Img
-                src="https://cdn.affine.pro/mail/2023-8-9/affine-logo.png"
-                alt="AFFiNE logo"
+                src="https://raw.githubusercontent.com/adria-pl/APLiNE/canary/assets/APL_Projectes_400.png"
+                alt="APL logo"
                 height="32px"
               />
             </Link>
