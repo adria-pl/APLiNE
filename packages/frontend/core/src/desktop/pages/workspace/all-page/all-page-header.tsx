@@ -1,5 +1,4 @@
-import { type MenuProps } from '@affine/component';
-import { IconType } from '@affine/component/ui/icon-picker/type';
+import { type MenuProps, IconType } from '@affine/component';
 import { usePageHelper } from '@affine/core/blocksuite/block-suite-page-list/utils';
 import { ExplorerDisplayMenuButton } from '@affine/core/components/explorer/display-menu';
 import { ViewToggle } from '@affine/core/components/explorer/display-menu/view-toggle';
