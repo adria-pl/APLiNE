@@ -16,7 +16,7 @@ import {
   PropertyIcon,
   ResizeTidyUpIcon,
 } from '@blocksuite/icons/rc';
-import { useLiveData, useService } from '@toeverything/infra';
+import { LiveData, useLiveData, useService } from '@toeverything/infra';
 import {
   type HTMLProps,
   memo,
@@ -32,6 +32,10 @@ import { quickActions } from '../quick-actions.constants';
 import * as styles from './doc-list-item.css';
 import { MoreMenuButton, MoreMenuContent } from './more-menu';
 import { CardViewProperties, ListViewProperties } from './properties';
+
+const noPdfAttachment$ = LiveData.computed(
+  () => undefined as string | undefined
+);
 
 export type DocListItemView = 'list' | 'grid' | 'masonry';
 
@@ -73,6 +77,11 @@ export const DocListItem = ({ ...props }: DocListItemProps) => {
   const selectMode = useLiveData(contextValue.selectMode$);
   const selectedDocIds = useLiveData(contextValue.selectedDocIds$);
   const prevCheckAnchorId = useLiveData(contextValue.prevCheckAnchorId$);
+  const docsService = useService(DocsService);
+  const doc = useLiveData(docsService.list.doc$(props.docId));
+  const pdfAttachmentId = useLiveData(
+    doc?.customProperty$('pdf') ?? noPdfAttachment$
+  );
 
   const handleMultiSelect = useCallback(
     (prevCursor: string, currCursor: string) => {
@@ -169,7 +178,11 @@ export const DocListItem = ({ ...props }: DocListItemProps) => {
       <WorkbenchLink
         ref={dragRef}
         draggable={false}
-        to={`/${props.docId}`}
+        to={
+          pdfAttachmentId
+            ? `/${props.docId}/attachments/${pdfAttachmentId}`
+            : `/${props.docId}`
+        }
         onClick={handleClick}
         data-selected={selectedDocIds.includes(props.docId)}
         className={styles.root}
