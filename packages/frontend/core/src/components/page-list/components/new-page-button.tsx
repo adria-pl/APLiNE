@@ -2,7 +2,7 @@ import { DropdownButton, Menu } from '@affine/component';
 import { BlockCard } from '@affine/component/card/block-card';
 import { useI18n } from '@affine/i18n';
 import { track } from '@affine/track';
-import { EdgelessIcon, ImportIcon, PageIcon } from '@blocksuite/icons/rc';
+import { EdgelessIcon, FileIconPdfIcon, ImportIcon, PageIcon } from '@blocksuite/icons/rc';
 import type { MouseEvent, PropsWithChildren } from 'react';
 import { useCallback, useState } from 'react';
 
@@ -13,6 +13,7 @@ type NewPageButtonProps = {
   createNewPage: (e?: MouseEvent) => void;
   createNewEdgeless: (e?: MouseEvent) => void;
   importFile?: () => void;
+  uploadPdf?: () => void;
   size?: 'small' | 'default';
 };
 
@@ -20,6 +21,7 @@ export const CreateNewPagePopup = ({
   createNewPage,
   createNewEdgeless,
   importFile,
+  uploadPdf,
 }: NewPageButtonProps) => {
   const t = useI18n();
   return (
@@ -56,6 +58,15 @@ export const CreateNewPagePopup = ({
           data-testid="import-button-in-all-page"
         />
       ) : null}
+      {uploadPdf ? (
+        <BlockCard
+          title={t['com.affine.new.upload-pdf']()}
+          desc={t['com.affine.upload_pdf_desc']()}
+          right={<FileIconPdfIcon width={20} height={20} />}
+          onClick={uploadPdf}
+          data-testid="upload-pdf-button-in-all-page"
+        />
+      ) : null}
       {/* TODO Import */}
     </div>
   );
@@ -66,6 +77,7 @@ export const NewPageButton = ({
   createNewPage,
   createNewEdgeless,
   importFile,
+  uploadPdf,
   size,
   children,
 }: PropsWithChildren<NewPageButtonProps>) => {
@@ -106,6 +118,11 @@ export const NewPageButton = ({
     setOpen(false);
   }, [importFile]);
 
+  const handleUploadPdf = useCallback(() => {
+    uploadPdf?.();
+    setOpen(false);
+  }, [uploadPdf]);
+
   return (
     <Menu
       items={
@@ -114,6 +131,7 @@ export const NewPageButton = ({
           createNewPage={handleCreateNewPage}
           createNewEdgeless={handleCreateNewEdgeless}
           importFile={importFile ? handleImportFile : undefined}
+          uploadPdf={uploadPdf ? handleUploadPdf : undefined}
         />
       }
       rootOptions={{

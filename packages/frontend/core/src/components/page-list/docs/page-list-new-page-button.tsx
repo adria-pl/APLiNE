@@ -11,6 +11,7 @@ export const PageListNewPageButton = ({
   onCreatePage,
   onCreateEdgeless,
   onImportFile,
+  onUploadPdf,
   ...props
 }: PropsWithChildren<{
   className?: string;
@@ -19,6 +20,7 @@ export const PageListNewPageButton = ({
   onCreatePage: (e?: MouseEvent) => void;
   onCreateEdgeless: (e?: MouseEvent) => void;
   onImportFile?: (e?: MouseEvent) => void;
+  onUploadPdf?: () => void;
 }> &
   React.HTMLAttributes<HTMLDivElement>) => {
   return (
@@ -26,6 +28,7 @@ export const PageListNewPageButton = ({
       <NewPageButton
         size={size}
         importFile={onImportFile}
+        uploadPdf={onUploadPdf}
         createNewDoc={onCreateDoc}
         createNewEdgeless={onCreateEdgeless}
         createNewPage={onCreatePage}
