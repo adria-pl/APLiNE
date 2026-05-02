@@ -746,6 +746,8 @@
   "com.affine.new.page-mode": "New page",
   "com.affine.new_edgeless": "New edgeless",
   "com.affine.new_import": "Import",
+  "com.affine.new.upload-pdf": "Upload PDF",
+  "com.affine.upload_pdf_desc": "Upload a PDF file to view",
   "com.affine.nextWeek": "Next week",
   "com.affine.notFoundPage.backButton": "Back home",
   "com.affine.notFoundPage.title": "Page not found",
