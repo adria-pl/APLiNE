@@ -24,6 +24,7 @@ import {
   type SVGProps,
   useCallback,
   useContext,
+  useMemo,
 } from 'react';
 
 import { PagePreview } from '../../page-list/page-content-preview';
@@ -32,10 +33,6 @@ import { quickActions } from '../quick-actions.constants';
 import * as styles from './doc-list-item.css';
 import { MoreMenuButton, MoreMenuContent } from './more-menu';
 import { CardViewProperties, ListViewProperties } from './properties';
-
-const noPdfAttachment$ = LiveData.computed(
-  () => undefined as string | undefined
-);
 
 export type DocListItemView = 'list' | 'grid' | 'masonry';
 
@@ -78,10 +75,16 @@ export const DocListItem = ({ ...props }: DocListItemProps) => {
   const selectedDocIds = useLiveData(contextValue.selectedDocIds$);
   const prevCheckAnchorId = useLiveData(contextValue.prevCheckAnchorId$);
   const docsService = useService(DocsService);
-  const doc = useLiveData(docsService.list.doc$(props.docId));
-  const pdfAttachmentId = useLiveData(
-    doc?.customProperty$('pdf') ?? noPdfAttachment$
+  const pdfAttachmentId$ = useMemo(
+    () =>
+      LiveData.computed(get => {
+        const doc = get(docsService.list.doc$(props.docId));
+        if (!doc) return undefined as string | undefined;
+        return get(doc.customProperty$('pdf')) as string | undefined;
+      }),
+    [docsService, props.docId]
   );
+  const pdfAttachmentId = useLiveData(pdfAttachmentId$);
 
   const handleMultiSelect = useCallback(
     (prevCursor: string, currCursor: string) => {
